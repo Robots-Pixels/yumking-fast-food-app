@@ -1,1 +1,116 @@
 @import "tailwindcss";
+
+#root{
+    position: relative;
+    font-family: "Righteous", serif;
+}
+
+.top-header{
+    border-bottom: 2px dashed rgb(56, 56, 56);
+}
+
+.top-left-links a{
+    transition: color 0.5s;
+}
+
+.top-left-links a:hover{
+    color: #FFC107;
+}
+
+.menu-links li{
+    position: relative;
+}
+
+.menu-links li::before{
+    content: "";
+    position: absolute;
+    left: 0;
+    top: -10px;
+    width: 0%;
+    height: 3px;
+    border-radius: 20px;
+    background: #FFC107;
+    transition: width 0.4s;
+}
+
+.menu-links li:hover{
+    color: #FFC107;
+}
+
+.menu-links li:hover::before{
+    width: 40%;
+}
+
+.socials-links li{
+    transition: color 0.5s;
+}
+
+.socials-links li:hover{
+    color: #FFC107;
+}
+
+.login-button{
+    transition: color 0.5s;
+}
+
+.login-button:hover{
+    color: #FFC107;
+}
+
+.hamburger-menu{
+    display: none;
+}
+
+.wraper, .sidemenu{
+    transition: all 0.3s;
+}
+
+
+@media (max-width: 80rem) {
+    .top-header, .bottom-header{
+        width: 72rem;
+    }
+}
+
+@media (max-width: 72rem) {
+    .top-header, .bottom-header{
+        width: 64rem;
+    }
+
+    .open-hours{
+        display: none;
+    }
+
+}
+
+@media (max-width: 64rem) {
+    .top-header, .bottom-header{
+        width: 48rem;
+    }
+
+    .menu-links{
+        display: none;
+    }
+
+    .logo{
+        font-size: 2.25rem;
+    }
+
+    header .cta-button{
+        display: none;
+    }
+
+    .hamburger-menu{
+        display: block;
+    }
+}
+
+@media (max-width: 48rem) {
+    .top-header{
+        display: none;
+    }
+
+    .bottom-header{
+        width: 100%;
+    }
+}

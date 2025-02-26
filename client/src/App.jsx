@@ -6,12 +6,15 @@ import Menu from './Pages/Menu.jsx'
 import Gallery from './Pages/Gallery.jsx'
 import Contact from './Pages/Contact.jsx'
 import Booking from './Pages/Booking.jsx'
+import Header from './Components/Header.jsx'
 
 export default function App() {
   return (
     <BrowserRouter>
-      <Routes>
+    
+      <Header />
 
+      <Routes>
         <Route path='/' element={<Home />} />
         <Route path='/about' element={<About />} />
         <Route path='/menu' element={<Menu />} />
