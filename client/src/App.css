@@ -65,6 +65,13 @@
     transition: all 0.3s;
 }
 
+header {
+    transition: background 0.4s;
+}
+
+.section-title{
+    font-family: "Fleur De Leah", serif;
+}
 
 @media (max-width: 80rem) {
     .top-header, .bottom-header{

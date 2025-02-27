@@ -23,6 +23,7 @@ import SideMenu from "./SideMenu";
 export default function Header() {
 
     const [clicked, setClicked] = useState(false);
+    const [scrolled, setScrolled] = useState(false);
     
     const toggleSideMenu = () => {
         setClicked(prev => !prev);
@@ -41,15 +42,28 @@ export default function Header() {
 
     }, []);
 
+    useEffect(() => {
+      const handleHeaderSticky = () => {
+        if (window.scrollY > 50){
+          setScrolled(true);
+        }
+      };
+
+      window.addEventListener("scroll", handleHeaderSticky);
+
+      return () => window.removeEventListener("scroll", handleHeaderSticky);
+
+    }, [])
+
   return (
     <>
-      <div className= {`fixed top-0 left-0 bg-black ${clicked ? "opacity-70" : "opacity-0"} w-full h-[100vh] wraper`}>
+      <div className= {`fixed ${clicked ? "z-20" : "-z-1"} top-0 left-0 bg-black ${clicked ? "opacity-70" : "opacity-0"} w-full h-[100vh] wraper`}>
       </div>
 
       <SideMenu clicked = {clicked} setClicked={setClicked}/>
 
-      <header className="sticky left-0 top-0  w-full bg-[#000000de] text-white overflow-hidden">
-        <div className="flex justify-between items-center sm:w-7xl mx-auto sm:px-12 py-4 top-header">
+      <header className={`${scrolled ? "bg-white sticky text-black shadow-xl": "absolute text-white"} left-0 top-0 w-full overflow-hidden z-50`}>
+        <div className={`justify-between items-center sm:w-7xl mx-auto sm:px-12 py-4 ${scrolled ? "hidden": "flex"} top-header`}>
           <div className="flex gap-5 top-left-links">
             <Link>
               {" "}
@@ -117,7 +131,7 @@ export default function Header() {
           </div>
         </div>
 
-        <div className="flex justify-between items-center sm:w-7xl mx-auto px-4 sm:px-12 py-3 bottom-header">
+        <div className={`flex justify-between items-center sm:w-7xl mx-auto px-4 sm:px-12 py-4 bottom-header`}>
           <div className="text-5xl text-[#FFC107] logo">
             <Link>YumKings</Link>
           </div>
@@ -162,6 +176,7 @@ export default function Header() {
         </div>
 
       </header>
+
     </>
   );
 }

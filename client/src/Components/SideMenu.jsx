@@ -19,7 +19,7 @@ import BouncingArrow from './BouncingArrow.jsx';
 
 export default function SideMenu({clicked, setClicked}) {
   return (
-      <div className={`fixed px-3 py-5 left-0 top-0 w-[80%] sm:w-[40%] h-full bg-white z-40 ${clicked ? "left-0 " : "left-[-100%]"} sidemenu`}>
+      <div className={`fixed px-3 py-5 left-0 top-0 w-[80%] sm:w-[40%] h-full bg-white z-50 ${clicked ? "left-0 " : "left-[-100%]"} sidemenu`}>
         
         <div className='flex items-center justify-between mb-8'>
           <div className="text-5xl text-[#FFC107] logo">
