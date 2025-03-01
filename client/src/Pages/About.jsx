@@ -35,7 +35,6 @@ export default function About() {
 
           </div>
 
-
           <div className='section-description flex-1 min-h-[500px] flex flex-col justify-between sm:gap-0 gap-4'>
             <h2 className='section-title text-5xl text-[#FFC107]'>
               About Us
@@ -92,8 +91,7 @@ export default function About() {
           </div>
 
         </div>
-        
-        
+      
       </section>
 
       <section className='bg-[#673f00] mb-20 text-white'>

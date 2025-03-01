@@ -119,6 +119,21 @@ button{
     transform: translateY(-10px);
 }
 
+.masonry div{
+    overflow: hidden;
+    border-radius: 4rem;
+}
+
+.masonry img{
+    cursor: pointer;
+    overflow: hidden;
+    transition: all 0.5s;
+}
+
+.masonry img:hover{
+    transform: scale(1.1);
+}
+
 @media (max-width: 80rem) {
     .top-header, .bottom-header{
         width: 72rem;
