@@ -134,6 +134,17 @@ button{
     transform: scale(1.1);
 }
 
+.contact-left-div{
+    display: flex;
+    gap: 1rem;
+    padding: 1.5rem 0px;
+    border-bottom: 1px dashed #afabab;
+}
+
+#last-div{
+    border: none;
+}
+
 @media (max-width: 80rem) {
     .top-header, .bottom-header{
         width: 72rem;
@@ -158,6 +169,18 @@ button{
 @media (max-width: 64rem) {
     .top-header, .bottom-header{
         width: 48rem;
+    }
+
+    .contact-wraper{
+        max-width: 48rem;
+    }
+
+    .contact-director{
+        flex-direction: column;
+    }
+
+    .contact-director section{
+        min-width: 100%;
     }
 
     header .menu-links{

@@ -65,7 +65,7 @@ export default function Header() {
 
       <SideMenu clicked = {clicked} setClicked={setClicked}/>
 
-      <header className={`${scrolled ? "bg-white sticky text-black shadow-xl": "absolute text-white"} left-0 top-0 w-full overflow-hidden z-40`}>
+      <header className={`${scrolled ? "bg-white sticky text-black shadow": "absolute text-white"} left-0 top-0 w-full overflow-hidden z-40`}>
         <div className={`justify-between items-center sm:w-7xl mx-auto sm:px-12 py-4 ${scrolled ? "hidden": "flex"} top-header`}>
           <div className="flex gap-5 top-left-links">
             <Link>
