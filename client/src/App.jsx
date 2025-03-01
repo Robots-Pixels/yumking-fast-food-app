@@ -7,6 +7,7 @@ import Gallery from './Pages/Gallery.jsx'
 import Contact from './Pages/Contact.jsx'
 import Booking from './Pages/Booking.jsx'
 import Header from './Components/Header.jsx'
+import Footer from './Components/Footer.jsx'
 
 export default function App() {
   return (
@@ -23,6 +24,8 @@ export default function App() {
         <Route path='/booking' element={<Booking />} />
 
       </Routes>
+
+      <Footer/>
     </BrowserRouter>
   )
 }

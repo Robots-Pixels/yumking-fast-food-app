@@ -3,14 +3,13 @@ import Hero from '../Components/Hero.jsx'
 import servicePlate from "../assets/servicePlate.png"
 import { Link } from 'react-router-dom'
 import BouncingArrow from '../Components/BouncingArrow.jsx'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { FaStar } from 'react-icons/fa'
 
 export default function About() {
   return ( 
     <div>
 
-      <Hero title={"About Us"} height={"80vh"} imageUrl={"https://buildeo.co.uk/wp-content/uploads/2021/12/Modern-Fast-food-Restaurant-Interior-Design-and-Renovation.jpg"}/>
+      <Hero title={"About Us"} height={"500px"} imageUrl={"https://buildeo.co.uk/wp-content/uploads/2021/12/Modern-Fast-food-Restaurant-Interior-Design-and-Renovation.jpg"}/>
 
       <section className='sm:max-w-7xl h-full mx-auto px-5 sm:px-12 mb-20'>
 
@@ -46,7 +45,7 @@ export default function About() {
               We Are Always <span className='text-[#FFC107]'>Here To Serve You</span> Fresh Food
             </h3>
 
-            <p>
+            <p className='text-[#4e4637]'>
             At our restaurant, freshness is our promise. We are dedicated to serving you carefully prepared meals made from the finest ingredients, ensuring that every bite is as satisfying as the last.
             </p>
 
@@ -173,7 +172,7 @@ export default function About() {
               We provide <span className='text-[#FFC107]'>Quality Food</span>
             </h3>
 
-            <p>
+            <p className='text-[#4e4637]'>
             At our restaurant, freshness is our promise. We are dedicated to serving you carefully prepared meals made from the finest ingredients, ensuring that every bite is as satisfying as the last.
             </p>
 
