@@ -30,6 +30,15 @@ export default function Header() {
     }
 
     useEffect(() => {
+      if (clicked){
+        document.body.style.overflow = "hidden";
+      }
+      else{
+        document.body.style.overflow = "auto";
+      }
+    }, [clicked])
+
+    useEffect(() => {
         const handleResize = () => {
             if (window.innerWidth > 768) {
                 setClicked(false);
