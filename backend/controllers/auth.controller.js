@@ -33,6 +33,12 @@ export const signup = async (req, res) => {
         await newUser.save();
         res.status(200).json({"new user": newUser})
     } catch (error) {
+        if (error.code === 11000){
+            return res.status(400).json({
+                message: "Name, Email or Phone number already used",
+                success: false
+            });
+        }
         res.status(500).json(error);
     }
 }

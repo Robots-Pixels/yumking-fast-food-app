@@ -100,9 +100,9 @@ export default function Contact() {
 
                     </div>
 
-                    <Link className='bg-[#FFC107] p-3 rounded-4xl flex items-center justify-center hover:bg-[#c1564c] transition-colors'>
+                    <button className='bg-[#FFC107] p-3 rounded-4xl flex items-center justify-center hover:bg-[#c1564c] transition-colors'>
                         Send your message
-                    </Link>
+                    </button>
 
                   </form>
                 </div>

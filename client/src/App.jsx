@@ -9,6 +9,7 @@ import Booking from './Pages/Booking.jsx'
 import Header from './Components/Header.jsx'
 import Footer from './Components/Footer.jsx'
 import SignIn from './Pages/SignIn.jsx'
+import SignUp from './Pages/SignUp.jsx'
 
 export default function App() {
   return (
@@ -24,6 +25,7 @@ export default function App() {
         <Route path='/contact' element={<Contact />} />
         <Route path='/booking' element={<Booking />} />
         <Route path='/signin' element={<SignIn />} />
+        <Route path='/signup' element={<SignUp/>} />
 
       </Routes>
 
