@@ -103,7 +103,7 @@ export default function Header() {
           <div className="flex gap-5">
             <div className="flex items-center gap-2">
               <FontAwesomeIcon icon={faSignOut} />
-              <Link className="login-button">Login</Link>
+              <Link to={"/signin"} className="login-button">Login</Link>
             </div>
             <div className="flex gap-5">
               <span>Follow Us:</span>
@@ -145,25 +145,25 @@ export default function Header() {
 
         <div className={`flex justify-between items-center sm:w-7xl mx-auto px-4 sm:px-12 py-4 bottom-header`}>
           <div className="text-5xl text-[#FFC107] logo">
-            <Link>YumKings</Link>
+            <Link to={"/"}>YumKings</Link>
           </div>
 
           <div>
             <ul className="flex gap-12 menu-links">
               <li className="text-[#FFC107]">
-                <Link>Home</Link>
+                <Link to={"/"}>Home</Link>
               </li>
               <li>
-                <Link>About</Link>
+                <Link to={"/about"}>About</Link>
               </li>
               <li>
-                <Link>Menu</Link>
+                <Link to={"/menu"}>Menu</Link>
               </li>
               <li>
-                <Link>Gallery</Link>
+                <Link to={"/gallery"}>Gallery</Link>
               </li>
               <li>
-                <Link>Contact</Link>
+                <Link to={"/contact"}>Contact</Link>
               </li>
             </ul>
           </div>
