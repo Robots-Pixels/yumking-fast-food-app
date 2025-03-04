@@ -7,9 +7,9 @@ import libphonenumber from "google-libphonenumber";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 
-const phoneUtilInstance = libphonenumber.PhoneNumberUtil.getInstance();
-
 export default function SignUp() {
+
+  const phoneUtilInstance = libphonenumber.PhoneNumberUtil.getInstance();
 
   const [error, setError] = useState(null);
   const navigate = useNavigate();

@@ -26,7 +26,6 @@ export default function App() {
         <Route path='/booking' element={<Booking />} />
         <Route path='/signin' element={<SignIn />} />
         <Route path='/signup' element={<SignUp/>} />
-
       </Routes>
 
       <Footer/>

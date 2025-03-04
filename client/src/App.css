@@ -147,6 +147,10 @@ button{
     border: none;
 }
 
+/* .summary-section{
+    transition: bottom 1s;
+} */
+
 @media (max-width: 80rem) {
     .top-header, .bottom-header{
         width: 72rem;

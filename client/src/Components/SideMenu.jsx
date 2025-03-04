@@ -79,7 +79,7 @@ export default function SideMenu({clicked, setClicked}) {
                     <li>
                       <Link>Contact</Link>
                     </li>
-                    <Link className="p-3 group bg-[#FFC107] rounded-3xl flex items-center gap-3 cta-button relative justify-center">
+                    <Link to={"/booking"} className="p-3 group bg-[#FFC107] rounded-3xl flex items-center gap-3 cta-button relative justify-center">
                         <span className="absolute inset-0 bg-[#c1564c] scale-0 group-hover:scale-100 transition-transform duration-300 rounded-full"></span>
                         <span className="z-10">Book Now</span>
                         <BouncingArrow />
