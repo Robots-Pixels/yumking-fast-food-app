@@ -12,10 +12,13 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { FaEye, FaEyeSlash, FaCalendar } from "react-icons/fa";
 import libphonenumber from "google-libphonenumber";
 import Summary from "../Components/Summary";
+import { useNavigate } from "react-router-dom";
 
 export default function Booking() {
   const phoneUtilInstance = libphonenumber.PhoneNumberUtil.getInstance();
 
+  const navigate = useNavigate();
+  
   const [formData, setFormData] = useState({
     countryCode: "Benin",
     telephone: "",
@@ -87,7 +90,7 @@ export default function Booking() {
 
   const handleSubmit = async () => {
 
-    const res = await fetch("/api/booking/newbooking",
+    const res = await fetch("/api/booking/newBooking",
       {
         method: "POST",
         headers:{
@@ -106,7 +109,8 @@ export default function Booking() {
       setError(data.message);
       return;
     }
-    
+
+    setError("");
     navigate("/menu");
   }
 

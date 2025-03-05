@@ -8,7 +8,6 @@ import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 
 export default function SignUp() {
-
   const phoneUtilInstance = libphonenumber.PhoneNumberUtil.getInstance();
 
   const [error, setError] = useState(null);

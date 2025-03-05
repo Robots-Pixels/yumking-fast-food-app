@@ -87,14 +87,16 @@ export const signin = async (req, res) => {
     else if(!email){
         try {
             const userFound = await User.findOne({
-                $and:[{telephone:`${telephone.replace(/\s+/g, "")}`}, {countryCode:countryCode.replace(/\s+/g, "")}]
+                $and:[{telephone:telephone.replace(/\s+/g, "")}, {countryCode:countryCode.replace(/\s+/g, "")}]
             });
+            
             if (!userFound){
                 return res.status(400).json({
                     message: "User not found. Invalid phone number or password",
                     success: false
                 });
             }
+
             const correctPassword  = bcryptjs.compareSync(password, userFound.password);
 
             if (!correctPassword){
