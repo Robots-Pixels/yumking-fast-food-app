@@ -54,13 +54,17 @@ export const newBooking = async (req, res) => {
         status(200).
         json(
             {   
-                "success": true,
-                "message": "Booking Added"
+                success: true,
+                message: "Booking Added",
+                booking: newBooking
             }
         )
 
     } catch (error) {
-        
+        return res.status(400).json({
+            message: "Something went wrong. Please try again.",
+            success: false
+        });
     }
 
 }

@@ -152,17 +152,21 @@ button{
 } */
 
 @media (max-width: 80rem) {
-    .top-header, .bottom-header{
+    .top-header, .bottom-header, .home-hero-wraper{
         width: 72rem;
     }
 
     .footer-top{
         grid-template-columns: repeat(2, 1fr);
     }
+
+    .last-partner{
+        display: none;
+    }
 }
 
 @media (max-width: 72rem) {
-    .top-header, .bottom-header{
+    .top-header, .bottom-header, .home-hero-wraper{
         width: 64rem;
     }
 
@@ -173,7 +177,7 @@ button{
 }
 
 @media (max-width: 64rem) {
-    .top-header, .bottom-header{
+    .top-header, .bottom-header, .home-hero-wraper{
         width: 48rem;
     }
 
@@ -215,6 +219,14 @@ button{
     .opening-hours{
         margin: 0px auto;
     }
+
+    .partners{
+        max-width: 48rem;
+    }
+
+    .two-last-partner{
+        display: none;
+    }
 }
 
 @media (max-width: 48rem) {
@@ -222,7 +234,7 @@ button{
         display: none;
     }
 
-    .bottom-header{
+    .bottom-header, .home-hero-wraper{
         width: 100%;
     }
 }

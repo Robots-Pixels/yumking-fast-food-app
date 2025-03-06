@@ -11,12 +11,17 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import libphonenumber from "google-libphonenumber";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { signInSucces, signInFailure } from "../../redux/user/userSlice.js";
 
 const phoneUtilInstance = libphonenumber.PhoneNumberUtil.getInstance();
 
 export default function SignIn() {
-  const [error, setError] = useState(null);
+  const dispatch = useDispatch();
+  const {temporaryBooking} = useSelector((state) => state.booking);
+  const {loading, error, lastPage} = useSelector((state) => state.user);
   const [connexionMethod, setConnexionMethod] = useState("telephone");
+  const [h3Message, setH3message] = useState("Happy to see you again !");
 
   const [formData, setFormData] = useState({
     countryCode: "Benin",
@@ -25,8 +30,24 @@ export default function SignIn() {
     password: "",
   });
 
-  const navigate = useNavigate();
+  useEffect(() => {
+    if (lastPage === "/booking"){
+      setH3message("Please login before making a booking");
+    }
+  }, [lastPage]);
 
+  useEffect(() => {
+    if (temporaryBooking){
+      setFormData({
+        countryCode: "Benin",
+        telephone: temporaryBooking.telephone,
+        email: "",
+        password: "",
+      });
+    }
+  }, [temporaryBooking]);
+
+  const navigate = useNavigate();
 
   const getCca2 = (countryCommon) => {
 
@@ -52,7 +73,7 @@ export default function SignIn() {
       );
       return phoneUtilInstance.isValidNumber(number);
     } catch (error) {
-      setError("Invalid phone number");
+      dispatch(signInFailure("Une erreur est survenue. Veuillez réessayer."))
     }
   };
 
@@ -61,7 +82,7 @@ export default function SignIn() {
 
     if (connexionMethod === "telephone"){
       if (!isValidPhoneNumber(formData.countryCode, formData.telephone)) {
-        setError("Invalid phone number");
+        dispatch(signInFailure("Invalid phone number"));
         return;
       }
     }
@@ -99,12 +120,14 @@ export default function SignIn() {
 
     const data = await res.json();
     console.log(formData);
+    
     if (data.success === false) {
-      setError(data.message);
+      dispatch(signInFailure(data.message));
       return;
     }
 
-    navigate("/menu");
+    dispatch(signInSucces(data.user));
+    navigate(lastPage);
   };
 
   const [passwordVisible, setPasswordVisible] = useState(false);
@@ -167,7 +190,7 @@ export default function SignIn() {
             </div>
 
             <h3 className="text-[#4e4637] text-sm sm:text-xl">
-              Happy to see you again !
+              {h3Message}
             </h3>
 
             <div className="w-full sm:min-w-[32rem]">
@@ -314,7 +337,7 @@ export default function SignIn() {
 
                 <h4 className="text-center ">
                   You don't have an account?{" "}
-                  <Link to={"/signin"} className="text-[#FFC107]">
+                  <Link to={"/signup"} className="text-[#FFC107]">
                     Register.
                   </Link>
                 </h4>

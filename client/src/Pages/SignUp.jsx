@@ -6,11 +6,13 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import libphonenumber from "google-libphonenumber";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 export default function SignUp() {
   const phoneUtilInstance = libphonenumber.PhoneNumberUtil.getInstance();
 
   const [error, setError] = useState(null);
+  const {temporaryBooking} = useSelector((state) => state.booking);
   const navigate = useNavigate();
   
   const getCca2 = (countryCommon) => {
@@ -55,8 +57,8 @@ export default function SignUp() {
       setError(data.message);
       return;
     }
-    
-    navigate("/menu");
+
+    navigate("/signin");
   }
 
 
@@ -69,6 +71,15 @@ export default function SignUp() {
       password: ""
     }
   );
+
+  useEffect(() => {
+    if (temporaryBooking){
+      setFormData({
+        ...formData,
+        telephone: temporaryBooking.telephone,
+      });
+    }
+  }, []);
 
   const [passwordVisible, setPasswordVisible] = useState(false);
 

@@ -81,7 +81,7 @@ export default function About() {
             </div>
 
             <div className='w-[170px]'>
-              <Link className="p-3 group bg-[#FFC107] rounded-3xl flex items-center gap-3 cta-button relative">
+              <Link to={"/menu"} className="p-3 group bg-[#FFC107] rounded-3xl flex items-center gap-3 cta-button relative">
                 <span className="absolute inset-0 bg-[#c1564c] scale-0 group-hover:scale-100 transition-transform duration-300 rounded-full"></span>
                 <span className="z-10">Discover More</span>
                 <BouncingArrow />
@@ -207,7 +207,7 @@ export default function About() {
             </div>
 
             <div className='w-[170px]'>
-              <Link className="p-3 group bg-[#FFC107] rounded-3xl flex items-center gap-3 cta-button relative">
+              <Link to={"/menu"} className="p-3 group bg-[#FFC107] rounded-3xl flex items-center gap-3 cta-button relative">
                 <span className="absolute inset-0 bg-[#c1564c] scale-0 group-hover:scale-100 transition-transform duration-300 rounded-full"></span>
                 <span className="z-10">Discover More</span>
                 <BouncingArrow />

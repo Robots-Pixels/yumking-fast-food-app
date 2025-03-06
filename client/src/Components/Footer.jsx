@@ -22,7 +22,7 @@ export default function Footer() {
             <div className='py-20 text-white footer-top'>
 
                 <div className="text-[#FFC107] logo">
-                  <Link className='text-4xl sm:text-5xl md:text-6xl'>YumKings</Link>
+                  <Link to={"/"} className='text-4xl sm:text-5xl md:text-6xl'>YumKings</Link>
                 </div>
 
                 <div className='quick-links'>
@@ -30,13 +30,11 @@ export default function Footer() {
                   <h2 className='text-2xl footer-title mb-5 inline-block'>Quick Links</h2>
 
                   <ul className='flex flex-col gap-3 top-left-links'>
-                    <Link >About Us</Link>
-                    <Link>Book A Table</Link>
-                    <Link>Contact Us</Link>
-                    <Link>Gallery</Link>
-                    <Link>SignIn</Link>
-                    <Link>Terms Of Services</Link>
-                    <Link>Privacy Policy</Link>
+                    <Link to={"/about"}>About Us</Link>
+                    <Link to={"/booking"}>Book A Table</Link>
+                    <Link to={"/contact"}>Contact Us</Link>
+                    <Link to={"/gallery "}>Gallery</Link>
+                    <Link to={"/signin"}>SignIn</Link>
                   </ul>
 
                 </div>
@@ -128,11 +126,22 @@ export default function Footer() {
               <h2 className='text-center'>&copy; Copyright 2025 <Link to={"/"} className='text-[#FFC107]'>YumKings</Link> All Rights Reserved.</h2>
 
               <div className='flex gap-3'>
-                <FaFacebook className='text-3xl text-[#FFC107]'/>
-                <FaInstagram className='text-3xl text-[#FFC107]'/>
-                <FaLinkedin className='text-3xl text-[#FFC107]'/>
-                <FaTwitter className='text-3xl text-[#FFC107]'/>
-            </div>
+                <Link to={"https://github.com/Robots-Pixels"} >
+                  <FaFacebook className='text-3xl text-[#FFC107]'/>
+                </Link>
+
+                <Link to={"https://github.com/Robots-Pixels"} >
+                  <FaInstagram  className='text-3xl text-[#FFC107]'/>
+                </Link>
+
+                <Link to={"https://github.com/Robots-Pixels"} >
+                  <FaLinkedin className='text-3xl text-[#FFC107]'/>
+                </Link>
+
+                <Link to={"https://github.com/Robots-Pixels"} >
+                  <FaTwitter className='text-3xl text-[#FFC107]'/>
+                </Link>
+              </div>
             </div>
 
         </div>

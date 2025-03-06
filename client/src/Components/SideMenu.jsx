@@ -23,7 +23,7 @@ export default function SideMenu({clicked, setClicked}) {
         
         <div className='flex items-center justify-between mb-8'>
           <div className="text-5xl text-[#FFC107] logo">
-              <Link>YumKings</Link>
+              <Link to={"/"}>YumKings</Link>
           </div>
 
           <div 
@@ -37,7 +37,7 @@ export default function SideMenu({clicked, setClicked}) {
         <div className='flex flex-col gap-5'>
 
               <div className="flex flex-col gap-3 top-left-links border-b-2 border-dashed border-gray-700 pb-5">
-                <Link>
+                <Link to={"mailto:otmartch23@gmail.com"}>
                   {" "}
                   <FontAwesomeIcon
                     className="text-[#FFC107]"
@@ -46,7 +46,7 @@ export default function SideMenu({clicked, setClicked}) {
                   <span>info@example.com</span>
                 </Link>
 
-                <Link>
+                <Link to={"tel:+229 01 49 82 04 93"}>
                   {" "}
                   <FontAwesomeIcon
                     className="text-[#FFC107]"
@@ -55,7 +55,7 @@ export default function SideMenu({clicked, setClicked}) {
                   <span>+229 40 82 04 93</span>
                 </Link>
 
-                <Link >
+                <Link to={"/contact"}>
                   {" "}
                   <FontAwesomeIcon className="text-[#FFC107]" icon={faClock} />{" "}
                   <span>Sun - Fri (08AM - 10PM)</span>
@@ -64,21 +64,21 @@ export default function SideMenu({clicked, setClicked}) {
 
               <div className="flex flex-col gap-3 top-left-links border-b-2 border-dashed border-gray-700 pb-4">
                   <ul className="flex flex-col gap-4">
-                    <li className="text-[#FFC107]">
-                      <Link>Home</Link>
-                    </li>
-                    <li>
-                      <Link>About</Link>
-                    </li>
-                    <li>
-                      <Link>Menu</Link>
-                    </li>
-                    <li>
-                      <Link>Gallery</Link>
-                    </li>
-                    <li>
-                      <Link>Contact</Link>
-                    </li>
+                      <li className="text-[#FFC107]">
+                        <Link to={"/"}>Home</Link>
+                      </li>
+                      <li>
+                        <Link to={"/about"}>About</Link>
+                      </li>
+                      <li>
+                        <Link to={"/menu"}>Menu</Link>
+                      </li>
+                      <li>
+                        <Link to={"/gallery"}>Gallery</Link>
+                      </li>
+                      <li>
+                        <Link to={"/contact"}>Contact</Link>
+                      </li>
                     <Link to={"/booking"} className="p-3 group bg-[#FFC107] rounded-3xl flex items-center gap-3 cta-button relative justify-center">
                         <span className="absolute inset-0 bg-[#c1564c] scale-0 group-hover:scale-100 transition-transform duration-300 rounded-full"></span>
                         <span className="z-10">Book Now</span>
@@ -90,42 +90,42 @@ export default function SideMenu({clicked, setClicked}) {
               <div className="flex flex-col gap-6 top-left-links pb-5">
                     <div className="flex items-center gap-2">
                       <FontAwesomeIcon icon={faSignOut} />
-                      <Link className="login-button">Login</Link>
+                      <Link to={"/signin"} className="login-button">Login</Link>
                     </div>
                     <div className="flex gap-5">
                       <span>Follow Us:</span>
-                      <ul className="flex gap-4 items-center socials-links">
-                        <li>
-                          <Link>
-                            {" "}
-                            <FaFacebook />{" "}
-                          </Link>
-                        </li>
-                        <li>
-                          <Link>
-                            {" "}
-                            <FaTwitter />{" "}
-                          </Link>
-                        </li>
-                        <li>
-                          <Link>
-                            {" "}
-                            <FaInstagram />{" "}
-                          </Link>
-                        </li>
-                        <li>
-                          <Link>
-                            {" "}
-                            <FaLinkedin />{" "}
-                          </Link>
-                        </li>
-                        <li>
-                          <Link>
-                            {" "}
-                            <FaWhatsapp />{" "}
-                          </Link>
-                        </li>
-                      </ul>
+              <ul className="flex gap-4 items-center socials-links">
+                <li>
+                  <Link to={"https://github.com/Robots-Pixels"} target="_blank" rel="noopener noreferrer">
+                    {" "}
+                    <FaFacebook />{" "}
+                  </Link>
+                </li>
+                <li>
+                  <Link to={"https://github.com/Robots-Pixels"} target="_blank" rel="noopener noreferrer">
+                    {" "}
+                    <FaTwitter />{" "}
+                  </Link>
+                </li>
+                <li>
+                  <Link to={"https://github.com/Robots-Pixels"} target="_blank" rel="noopener noreferrer">
+                    {" "}
+                    <FaInstagram />{" "}
+                  </Link>
+                </li>
+                <li>
+                  <Link to={"https://linkedin.com/in/otmar-tchenga-953988319"} target="_blank" rel="noopener noreferrer">
+                    {" "}
+                    <FaLinkedin />{" "}
+                  </Link>
+                </li>
+                <li>
+                  <Link to={"https://whatsapp.com"} target="_blank" rel="noopener noreferrer">
+                    {" "}
+                    <FaWhatsapp />{" "}
+                  </Link>
+                </li>
+              </ul>
                     </div>
               </div>
 

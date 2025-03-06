@@ -8,7 +8,7 @@ import {
   faBowlRice,
   faCake
 } from '@fortawesome/free-solid-svg-icons'
-import MenuItem from '../Components/MenuItem'
+import MenuItem from '../Components/MenuItem.jsx'
 
 export default function Menu() {
 
@@ -39,7 +39,7 @@ export default function Menu() {
 
   return (
 
-    <div className='bg-[#ffeecb]'>
+    <div className='bg-[#ffe0d9]'>
       
       <Hero title={"Menu"} height={"500px"} imageUrl={"https://buildeo.co.uk/wp-content/uploads/2021/12/Modern-Fast-food-Restaurant-Interior-Design-and-Renovation.jpg"}/>
 
@@ -101,8 +101,6 @@ export default function Menu() {
 
 
     </div>
-
-  
   
   )
 }

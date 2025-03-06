@@ -11,10 +11,17 @@ import {
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { FaEye, FaEyeSlash, FaCalendar } from "react-icons/fa";
 import libphonenumber from "google-libphonenumber";
-import Summary from "../Components/Summary";
 import { useNavigate } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
+import { setTemporaryBooking } from "../../redux/booking/bookingSlice.js";
+import { setLastPage } from "../../redux/user/userSlice.js";
 
 export default function Booking() {
+  const {currentUser, lastPage} = useSelector((state) => state.user);
+  const {temporaryBooking} = useSelector((state) => state.booking);
+
+  const dispatch = useDispatch();
+
   const phoneUtilInstance = libphonenumber.PhoneNumberUtil.getInstance();
 
   const navigate = useNavigate();
@@ -28,11 +35,33 @@ export default function Booking() {
     time: "",
     message: "",
   });
+
+  useEffect(() => {
+    if (temporaryBooking){
+
+      if (currentUser){
+        setFormData({
+          countryCode: "Benin",
+          telephone: currentUser.telephone,
+          guest: temporaryBooking.guest,
+          day: temporaryBooking.day,
+          time: temporaryBooking.time,
+          message: temporaryBooking.message,
+        })
+      }
+    }
+    else if (currentUser){
+      setFormData({
+        ...formData,
+        telephone: currentUser.telephone,
+      })
+    }
+  }, []);
+
   const [countryList, setCountryList] = useState([]);
   const [passwordVisible, setPasswordVisible] = useState(false);
   const [transform, setTransform] = useState("translateY(0)");
   const [error, setError] = useState(null);
-
 
   const handleChange = (e) => {
     setFormData({
@@ -89,6 +118,20 @@ export default function Booking() {
   };
 
   const handleSubmit = async () => {
+    dispatch(setTemporaryBooking(
+      {
+        ...formData,
+        password:"",
+        countryCode: getCca2(formData.countryCode),
+        telephone: formData.countryCode === "Benin" ? ( formData.telephone.replace(/\s+/g, "").startsWith("01") ? formData.telephone.replace(/\s+/g, "") : `01${formData.telephone.replace(/\s+/g, "")}`) : formData.telephone.replace(/\s+/g, "")
+      }
+    ));
+
+    if (!currentUser) {
+      dispatch(setLastPage("/booking"));
+      navigate("/signin");
+      return;
+    }
 
     const res = await fetch("/api/booking/newBooking",
       {
@@ -111,6 +154,7 @@ export default function Booking() {
     }
 
     setError("");
+    dispatch(setTemporaryBooking(data.booking));
     navigate("/menu");
   }
 
@@ -294,52 +338,52 @@ export default function Booking() {
         </div>
       </section>
 
-            <section 
-            className={`fixed z-20 left-0 bottom-[-400px] w-full py-10 bg-black flex items-center justify-center text-white summary-section`}
-            style={{
-              transition: "transform 1s ease",
-              transform: transform,
-            }}>
-                <div className='flex flex-col items-center gap-1'>
-        
-                    <h2 className='section-title text-4xl text-[rgb(255,193,7)]'>
-                        Order Summary
-                    </h2>
-        
-                    <h3 className='text-3xl mb-3'>
-                        Review your order
-                    </h3>
-        
-                    <div className='flex flex-col gap-1 text-center'>
-                        <h3> <span className='text-[rgb(255,193,7)]' >Your Phone Number </span> : {`${formData.countryCode} ${formData.telephone}`}</h3>
-                        <h3> <span className='text-[rgb(255,193,7)]' >Number of guests </span> : {formData.guest}</h3>
-                        <h3> <span className='text-[rgb(255,193,7)]' >Date </span> : {formData.day} for {formData.time}</h3>
-        
-                        { (formData.message !== "") && <h3 className='mb-2'> <span className='text-[rgb(255,193,7)]' >Particular Request </span> : {formData.message} </h3>}
-        
-                        <div className="flex flex-col sm:flex-row gap-3">
+      <section 
+      className={`fixed z-20 left-0 bottom-[-400px] w-full py-10 bg-black flex items-center justify-center text-white summary-section`}
+      style={{
+        transition: "transform 1s ease",
+        transform: transform,
+      }}>
+          <div className='flex flex-col items-center gap-1'>
+  
+              <h2 className='section-title text-4xl text-[rgb(255,193,7)]'>
+                  Order Summary
+              </h2>
+  
+              <h3 className='text-3xl mb-3'>
+                  Review your order
+              </h3>
+  
+              <div className='flex flex-col gap-1 text-center'>
+                  <h3> <span className='text-[rgb(255,193,7)]' >Your Phone Number </span> : {`${formData.countryCode} ${formData.telephone}`}</h3>
+                  <h3> <span className='text-[rgb(255,193,7)]' >Number of guests </span> : {formData.guest}</h3>
+                  <h3> <span className='text-[rgb(255,193,7)]' >Date </span> : {formData.day} for {formData.time}</h3>
+  
+                  { (formData.message !== "") && <h3 className='mb-2'> <span className='text-[rgb(255,193,7)]' >Particular Request </span> : {formData.message} </h3>}
+  
+                  <div className="flex flex-col sm:flex-row gap-3">
 
-                          <button onClick={() => {
-                            setTransform("translateY(0px)");
-                            }} 
-                            className="bg-[#c1564c] p-3 rounded-4xl flex items-center justify-center hover:opacity-90 transition-colors w-full">
-                              Update Order
-                          </button>
+                    <button onClick={() => {
+                      setTransform("translateY(0px)");
+                      }} 
+                      className="bg-[#c1564c] p-3 rounded-4xl flex items-center justify-center hover:opacity-90 transition-colors w-full">
+                        Update Order
+                    </button>
 
-                          <button onClick={() => {
-                            setTransform("translateY(0px)");
-                            handleSubmit();
-                            }}
-                            className="bg-[#FFC107] p-3 rounded-4xl flex items-center justify-center hover:opacity-90 transition-colors w-full">
-                              Confirm Order
-                          </button>
+                    <button onClick={() => {
+                      setTransform("translateY(0px)");
+                      handleSubmit();
+                      }}
+                      className="bg-[#FFC107] p-3 rounded-4xl flex items-center justify-center hover:opacity-90 transition-colors w-full">
+                        Confirm Order
+                    </button>
 
-                        </div>
+                  </div>
 
-                    </div>
-        
-                </div>
-            </section>
+              </div>
+  
+          </div>
+      </section>
 
     </div>
   );
